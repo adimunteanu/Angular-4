@@ -17,11 +17,12 @@
   <div class="row">
     <div class="col-xs-12">
       <app-game-control (gameStarted)="onGameStarted($event)"></app-game-control>
-      <ul *ngFor="let element of elements">
-        <li>
-          {{element}}
-        </li>
-      </ul>
+      <app-odd *ngFor="let odd of odds" [number]="odd"></app-odd>
+      <app-even *ngFor="let even of evens">
+        <p style="background-color:yellow;">
+          Even - {{even}}
+        </p>
+      </app-even>
     </div>
   </div>
 </div>

@@ -6,8 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  elements=[];
+  odds=[];
+  evens=[];
   onGameStarted(element:{i:number}){
-    this.elements.push(element.i);
+    if(element.i%2!==0) this.odds.push(element.i);
+    else this.evens.push(element.i);
   }
 }
