@@ -1,3 +1,4 @@
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { SelectRecipeComponent } from './recipes/select-recipe/select-recipe.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { NgModule } from '@angular/core';
@@ -10,7 +11,9 @@ const appRoutes: Routes = [
      component: RecipesComponent,
      children: [
          {path:'',component: SelectRecipeComponent},
-         {path:':id',component: RecipeDetailComponent}
+         {path: 'new', component: RecipeEditComponent},
+         {path:':id',component: RecipeDetailComponent},
+         {path: ':id/edit', component: RecipeEditComponent}
     ]},
     {path: 'shopping-list', component: ShoppingListComponent}
 ];

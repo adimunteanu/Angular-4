@@ -3,7 +3,7 @@ import { Ingredient } from './../../shared/ingredient.model';
 import { ShoppingListService } from './../../shopping-list/shopping-list.service';
 import { Component, OnInit } from '@angular/core';
 import {Recipe} from '../recipe.model';
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
@@ -14,7 +14,8 @@ export class RecipeDetailComponent implements OnInit {
   id:number;
   constructor(private recipeService:RecipeService,
               private slService:ShoppingListService,
-              private route:ActivatedRoute) { }
+              private route:ActivatedRoute,
+              private router: Router) { }
   sendToSL(){
     for(let ingredient of this.recipe.ingredients){
       this.slService.addIngredient(ingredient);
@@ -30,4 +31,8 @@ export class RecipeDetailComponent implements OnInit {
     )
   }
 
+  onEditRecipe(){
+    this.router.navigate(['edit'], {relativeTo:this.route});
+    //this.router.navigate(['../', this.id, 'edit'], {relativeTo:this.route});
+  }
 }
