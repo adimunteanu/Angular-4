@@ -8,8 +8,8 @@ import { Response } from '@angular/http';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {
-  constructor(private dataStorageService: DataStorageService,
-              private authService: AuthService){}
+  constructor(public dataStorageService: DataStorageService,
+              public authService: AuthService){}
   onSaveRecipes() {
     this.dataStorageService.storeRecipes()
       .subscribe(

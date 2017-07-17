@@ -9,7 +9,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
   @ViewChild('f') form: NgForm;
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
     console.log(this.form);

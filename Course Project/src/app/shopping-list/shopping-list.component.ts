@@ -11,9 +11,9 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class ShoppingListComponent implements OnInit,OnDestroy {
   ingredients:Ingredient[];
-  private subscription: Subscription;
+  public subscription: Subscription;
 
-  constructor(private slService: ShoppingListService) {}
+  constructor(public slService: ShoppingListService) {}
   
   ngOnInit() {
     this.ingredients=this.slService.getIngredients();

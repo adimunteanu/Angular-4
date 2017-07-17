@@ -9,24 +9,7 @@ import { Injectable } from "@angular/core";
 export class RecipeService { 
     recipesChanged= new Subject<Recipe[]>();
 
-    private recipes: Recipe[]=[
-        new Recipe(
-            'A Test Recipe',
-            'This is simply a test',
-            'http://www.seriouseats.com/images/2015/09/20150914-pressure-cooker-recipes-roundup-09.jpg',
-            [
-                new Ingredient('Meat',1),
-                new Ingredient('French Fries',20)
-            ]),
-        new Recipe(
-            'Another Test Recipe',
-            'This is simply a test',
-            'http://www.seriouseats.com/images/2015/09/20150914-pressure-cooker-recipes-roundup-09.jpg',
-            [
-                new Ingredient('Buns', 2),
-                new Ingredient('Meat', 1)
-            ])
-    ];
+    public recipes: Recipe[]=[];
     setRecipes(recipes: Recipe[]){
         this.recipes = recipes;
         this.recipesChanged.next(this.recipes.slice());

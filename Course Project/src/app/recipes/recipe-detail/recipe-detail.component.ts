@@ -12,10 +12,10 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 export class RecipeDetailComponent implements OnInit {
   recipe:Recipe;
   id:number;
-  constructor(private recipeService:RecipeService,
-              private slService:ShoppingListService,
-              private route:ActivatedRoute,
-              private router: Router) { }
+  constructor(public recipeService:RecipeService,
+              public slService:ShoppingListService,
+              public route:ActivatedRoute,
+              public router: Router) { }
   sendToSL(){
     for(let ingredient of this.recipe.ingredients){
       this.slService.addIngredient(ingredient);
