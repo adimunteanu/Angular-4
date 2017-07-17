@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
@@ -5,6 +6,8 @@ import * as firebase from 'firebase';
 @Injectable()
 export class AuthService {
     token: string;
+    email:string;
+    userLoggedIn = new Subject<string>();
 
     constructor(public router: Router){}
 
@@ -19,6 +22,7 @@ export class AuthService {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(
                 response => {
+                    this.userLoggedIn.next(email);
                     this.router.navigate(['/']);
                     firebase.auth().currentUser.getToken()
                         .then(
@@ -37,6 +41,9 @@ export class AuthService {
         this.router.navigate(['/']);
     }
 
+    EmitEmail(){
+        return this.email;
+    }
     getToken(){
         firebase.auth().currentUser.getToken()
             .then(
