@@ -1,5 +1,6 @@
+import { Subscription } from 'rxjs/Subscription';
 import { RecipeService } from './../recipe.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {Recipe} from '../recipe.model';
 import { Router, ActivatedRoute,Params } from "@angular/router";
 
@@ -8,16 +9,21 @@ import { Router, ActivatedRoute,Params } from "@angular/router";
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
+<<<<<<< HEAD
 export class RecipeListComponent implements OnInit {
   id:number = null;
+=======
+export class RecipeListComponent implements OnInit,OnDestroy{
+>>>>>>> 902f9e9eea645e7e7d81a7248fb4d597b323ab17
   recipes:Recipe[];
+  subscription: Subscription;
   
-  
-  constructor(private recipeService:RecipeService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+  constructor(public recipeService:RecipeService,
+              public router: Router,
+              public route: ActivatedRoute) { }
 
   ngOnInit() {
+<<<<<<< HEAD
     //console.log(this.route.params['id']);
     // this.route.params.subscribe(
     //   (params: Params) => {
@@ -26,10 +32,21 @@ export class RecipeListComponent implements OnInit {
     //     console.log('subscribe works' + this.id);
     // })
     this.recipes = this.recipeService.getRecipes();
+=======
+    this.recipes = this.recipeService.getRecipes();
+    this.subscription = this.recipeService.recipesChanged.subscribe(
+      (recipes: Recipe[]) => {
+        this.recipes = recipes;
+      }
+    )
+>>>>>>> 902f9e9eea645e7e7d81a7248fb4d597b323ab17
   }
 
   onNewRecipe() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
 }
