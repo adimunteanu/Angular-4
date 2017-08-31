@@ -1,7 +1,7 @@
 import { RecipeService } from './../recipe.service';
 import { Component, OnInit } from '@angular/core';
 import {Recipe} from '../recipe.model';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute,Params } from "@angular/router";
 
 @Component({
   selector: 'app-recipe-list',
@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
+  id:number = null;
   recipes:Recipe[];
   
   
@@ -17,11 +18,18 @@ export class RecipeListComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.recipes=this.recipeService.getRecipes();
+    //console.log(this.route.params['id']);
+    // this.route.params.subscribe(
+    //   (params: Params) => {
+    //     console.log(params);
+    //     this.id = +params[0];
+    //     console.log('subscribe works' + this.id);
+    // })
+    this.recipes = this.recipeService.getRecipes();
   }
 
-  onNewRecipe(){
-    this.router.navigate(['new'],{relativeTo:this.route});
+  onNewRecipe() {
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
 }
