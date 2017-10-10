@@ -8,10 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-=======
->>>>>>> 902f9e9eea645e7e7d81a7248fb4d597b323ab17
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
