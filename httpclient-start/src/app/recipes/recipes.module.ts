@@ -1,3 +1,5 @@
+import { RecipeEffects } from './store/recipe.effects';
+import { EffectsModule } from '@ngrx/effects';
 import { FeatureState, recipeReducer } from './store/recipe.reducers';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
@@ -27,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     RecipesRoutingModule,
     SharedModule,
-    StoreModule.forFeature('recipes', recipeReducer)
+    StoreModule.forFeature('recipes', recipeReducer),
+    EffectsModule.forFeature([RecipeEffects])
   ]
 })
 export class RecipesModule {}
