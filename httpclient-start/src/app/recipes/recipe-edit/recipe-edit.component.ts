@@ -1,7 +1,8 @@
-import { FeatureState, State } from './../store/recipe.reducers';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+
+import { FeatureState, State } from './../store/recipe.reducers';
 import * as RecipeActions from '../store/recipe.actions';
 import { Store } from '@ngrx/store';
 
@@ -103,5 +104,7 @@ export class RecipeEditComponent implements OnInit {
       'ingredients': recipeIngredients
     });
   }
-
+  get formData () {
+    return <FormArray>this.recipeForm.get('ingredients');
+  }
 }
